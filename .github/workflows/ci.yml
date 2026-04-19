@@ -6,15 +6,16 @@ on:
     branches: [main]
 
 jobs:
-  runs-on: ubuntu-latest
-  steps:
-  - name: checkout files
-    uses: actions/checkout@v4
-  - name : setup python
-    uses: actions/setup-python@v4
-    with:
-      python-version: '3.11'
-  - name: install dependecy
-    run: pip install -r requirements.txt
-  - name: test
-    run: pytest test_app.py -v
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout files
+      uses: actions/checkout@v4
+    - name : setup python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    - name: install dependecy
+      run: pip install -r requirements.txt
+    - name: test
+      run: pytest test_app.py -v
